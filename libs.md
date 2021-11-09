@@ -156,5 +156,7 @@ Add const {loading}
 
 ///LOGIN REGISTER PAEGES DESING
 Login.jsx
-index.css => .login 
+Register.jsx  //a login.jsx clone
+index.css
+
 

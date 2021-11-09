@@ -127,9 +127,34 @@ Create useEffect
 
 
 ///HOME PAGE DESIGN USING ANTD DESGINER//
-antd.design
-            /components/overview/
+antd.design/components/overview/
 antd provides plenty of UI components to enrich your web applications, and we will improve components experience consistently. We also recommend some great Third-Party Libraries additionally.
 
+
     //installing antd library(FRONTEND PATH)//
+https://ant.design/docs/react/introduce
 npm i antd
+
+**import antd css manually**
+
+//App.jsx//
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
+//Styling Home.jsx + index.css//
+Home.js
+index.css
+
+//Home.js
+Add const {loading}
+
+//Create ../components/Spining.jsx 
+
+
+//Working on css
+.car .car-img .car-content .car:hover .
+
+
+///LOGIN REGISTER PAEGES DESING
+Login.jsx
+index.css => .login 
+

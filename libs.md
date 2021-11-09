@@ -154,9 +154,17 @@ Add const {loading}
 .car .car-img .car-content .car:hover .
 
 
-///LOGIN REGISTER PAEGES DESING
+///LOGIN REGISTER PAGES DESING
 Login.jsx
 Register.jsx  //a login.jsx clone
 index.css
+
+//Login and Register actions
+Implement onFinish @ <Form></Form> for Register and Login.jsx
+
+//redux/actions
+    ->userActions.jsx
+
+Create file mentioned above, it will be created to perform how user state will be managed (login/register :: request and response)
 
 

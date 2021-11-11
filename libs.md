@@ -154,7 +154,7 @@ Add const {loading}
 .car .car-img .car-content .car:hover .
 
 
-///LOGIN REGISTER PAGES DESING
+///LOGIN REGISTER PAGES DESING  CHECKPOINT
 Login.jsx
 Register.jsx  //a login.jsx clone
 index.css
@@ -165,6 +165,31 @@ Implement onFinish @ <Form></Form> for Register and Login.jsx
 //redux/actions
     ->userActions.jsx
 
-Create file mentioned above, it will be created to perform how user state will be managed (login/register :: request and response)
+Create file mentioned above, it will be created to perform how user state will be managed via axios.post (login/register :: request and response)
+
+//Login.jsx, Register.jsx
+import userLogin => Login.jsx
+import userRegister => Register.jsx
+import useDispatch => each module
+Instance useDispatch() = each module
+
+
+///USER AUTHENTICATION API CHECKPOINT
+//ROOT PROJECT PATH
+Create
+    ->routes/
+            ->carsRoute.jsx
+            ->usersRoute.jsx
+    ->models/
+            ->carsModel.jsx
+            ->userModel.jsx
+
+--Add routes carsRouter and usersRoute @server.js
+
+app.use(express.json())
+
+app.use("api/users, require("./routes/usersRoute"))
+app.use("api/cars", require("./routes/carsRoute"))
+
 
 

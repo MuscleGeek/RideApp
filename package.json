@@ -1,18 +1,29 @@
 {
   "name": "rideapp",
   "version": "1.0.0",
-  "description": "RideApp 506 Car Rental",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jonathan Villalobos Mora",
-  "license": "ISC",
+  "description": "506 Auto Rental",
+  "proxy": "http://localhost:5000",
+  "main": "db.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.15"
   },
-  "proxy": "localhost:5000"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuscleGeek/RideApp.git"
+  },
+  "author": "Jonathan Villalobos Mora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuscleGeek/RideApp/issues"
+  },
+  "homepage": "https://github.com/MuscleGeek/RideApp#readme"
 }

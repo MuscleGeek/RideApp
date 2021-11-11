@@ -1,10 +1,18 @@
+
 const express = require('express')
 const app = express()
-const dbconnection = require('./db') //this line will be added when we have created db.js file
+const cors = require('cors')
+/*const port = process.env.PORT;*/
+const dbConnection = require('./db') //this line will be added when we have created db.js file
 require('dotenv').config()
+app.use(cors())
+app.use(express.json()) //bodyParser
 
 
-const PORT = process.env.PORT;
+app.use('/api/users/', require('./routes/usersRoute.jsx'))
+app.use('/api/cars', require('./routes/carsRoute.jsx'))
 
 app.get("/", (req,res) => res.send("Hello Dev!"))
-app.listen(PORT, () => console.log(`Node JS Server Started in Port ${PORT}!`));
+app.listen(process.env.PORT, () => console.log(`Node JS Server Started in Port ${process.env.PORT}`))
+
+

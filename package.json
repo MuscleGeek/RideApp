@@ -2,7 +2,6 @@
   "name": "rideapp",
   "version": "1.0.0",
   "description": "506 Auto Rental",
-  "proxy": "http://localhost:5000",
   "main": "db.js",
   "dependencies": {
     "cors": "^2.8.5",

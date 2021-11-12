@@ -212,5 +212,16 @@ Apps.js
     ->add {Redirect} @ router-router-dom 
 
 
+//Car animation login/register Pages // FE CHECKPOINT 
+***AOS - Animate on scroll library***
+npm i aos
 
+**IMPORT NEXT LINES @ Login.jsx and Register.jsx
+-> import AOS from 'aos'
+-> import 'aos/dist/aos.css'
+->import Spinner from '../components/Spinner.jsx'
+->AOS.init()
+-import {useSelector} @react-redux
+-add data-aos="slide-left" data-aos-duration="1500" on <img/>
 
+//CAR BOOKING // FE CHECKPOINT

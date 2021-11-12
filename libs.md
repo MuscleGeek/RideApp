@@ -194,14 +194,23 @@ app.use("api/cars", require("./routes/carsRoute"))
 
 
 //USER AUTHENTICATION API CHECKPOINT
-DefaultLayout modifying  (add logged in function button + dropdown using Ant Design library)
+DefaultLayout.jsx modifying  (add logged in function button + dropdown using Ant Design library)
     ***
     (Copy dropdown menu botton center from ant design site from components -> dropdown)
+    ->JSON.parse..
     ->const menu
     -><Row>
+        -><Col>
     -><Dropdown>
+        -><Button>
     
 
     ***
+
+//Protected Routes(Router) FE CHECKPOINT
+Apps.js
+    ->add {Redirect} @ router-router-dom 
+
+
 
 

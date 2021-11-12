@@ -186,10 +186,22 @@ Create
 
 --Add routes carsRouter and usersRoute @server.js
 
+const cors = require('cors')
 app.use(express.json())
-
+app.use(cors())
 app.use("api/users, require("./routes/usersRoute"))
 app.use("api/cars", require("./routes/carsRoute"))
 
+
+//USER AUTHENTICATION API CHECKPOINT
+DefaultLayout modifying  (add logged in function button + dropdown using Ant Design library)
+    ***
+    (Copy dropdown menu botton center from ant design site from components -> dropdown)
+    ->const menu
+    -><Row>
+    -><Dropdown>
+    
+
+    ***
 
 

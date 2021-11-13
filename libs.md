@@ -205,8 +205,6 @@ DefaultLayout.jsx modifying  (add logged in function button + dropdown using Ant
         -><Button>
     
 
-    ***
-
 //Protected Routes(Router) FE CHECKPOINT
 Apps.js
     ->add {Redirect} @ router-router-dom 
@@ -246,3 +244,20 @@ const {RangePicker} = DataPicker     //Specific datapicker type
 -Create <div></div> for {totalHours}
 
 //BOOKING CAR // FE CHECKPOINT
+->BookingCar.jsx
+**Implementing Total hours <div></div>Section**
+-Add const [driver, setDriver] //if driver needed
+-Add const [totalAmount, setTotalAmount]
+
+-Add useEffect for Driver    //Add up TotalAmount when driver is required
+
+-Add const bookNow  //Create Booking Car Order Data
+
+->Create file actions
+                ->bookingActions.jsx
+
+->BookingCar.jsx
+-import {bookCar} from  '../redux/actions/bookingActions.jsx'
+
+-Add dispatch(bookCar(reqObject)) @ const bookCar
+

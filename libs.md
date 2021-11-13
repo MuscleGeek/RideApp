@@ -214,6 +214,7 @@ Apps.js
 
 //Car animation login/register Pages // FE CHECKPOINT 
 ***AOS - Animate on scroll library***
+Small library to animate elements on your page as you scroll
 npm i aos
 
 **IMPORT NEXT LINES @ Login.jsx and Register.jsx
@@ -224,4 +225,24 @@ npm i aos
 -import {useSelector} @react-redux
 -add data-aos="slide-left" data-aos-duration="1500" on <img/>
 
-//CAR BOOKING // FE CHECKPOINT
+//CAR BOOKING SCREEN (CARD INFO)// FE 
+->Home.js
+import {Link} from 'react-router-dom
+Add <Link> for Booking Now!
+
+->BookingCar.jsx
+
+->App.js
+Modifiying path='/bookingCar' to path='/booking/:carid'
+
+//WORKING ON TIMESLOTS //DATAPICKER // FE-BE CHECKPOINT
+->BookingCar.jsx
+import {DataPicker} from 'antd'
+const {RangePicker} = DataPicker     //Specific datapicker type
+->add another <Divider></Divider>
+
+-Create const SelectTimeSlot
+-Create RangPicker states
+-Create <div></div> for {totalHours}
+
+//BOOKING CAR // FE CHECKPOINT

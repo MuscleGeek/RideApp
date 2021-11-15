@@ -305,5 +305,15 @@ ADD <Row><Col></Col></Row> tags like this:
 )}
 ****************
 
+//BOOKED TIMESLOTS MODAL//
 
+BookingCar.jsx
+//It will show car reserved slots 
+-Add <button>See Booked Slots<button> after <RangePicker> tag
 
+***Modal***
+-add import {Modal} from 'antd' 
+
+-add <Modal></Modal> after </Row>
+-add const[showModal, setShowModal] = useState(false)
+-add onClick{() => setShowModal(true)} "Show Time Slots" button

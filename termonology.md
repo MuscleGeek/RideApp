@@ -11,3 +11,6 @@ useSelector es un Hook que nos permite extraer datos del store de Redux utilizan
 
 //moment
 Library for parsing, validating, manipulating, and formatting dates. Project Status
+
+//Modal
+Usado para despleagar un pantalla con informacion detallada. Usado como un tipo de informacion basado en cuando hacerla visible.

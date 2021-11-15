@@ -259,5 +259,15 @@ const {RangePicker} = DataPicker     //Specific datapicker type
 ->BookingCar.jsx
 -import {bookCar} from  '../redux/actions/bookingActions.jsx'
 
--Add dispatch(bookCar(reqObject)) @ const bookCar
+-Add dispatch(bookCar(reqObject)) into const bookCar()
+
+//BOOOKING CAR BACKEND///// CHECKPOINT
+***MODELS**
+Create models/bookingModel.jsx
+
+***ROUTES***
+Create routes/bookingsRoute.jsx
+
+
+
 

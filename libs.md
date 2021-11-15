@@ -261,13 +261,49 @@ const {RangePicker} = DataPicker     //Specific datapicker type
 
 -Add dispatch(bookCar(reqObject)) into const bookCar()
 
-//BOOOKING CAR BACKEND///// CHECKPOINT
+//BOOKING CAR BACKEND///// CHECKPOINT
 ***MODELS**
 Create models/bookingModel.jsx
 
 ***ROUTES***
 Create routes/bookingsRoute.jsx
 
+
+//FILTER CARS BASED ON AVAILABILITY
+
+->Home.jsx
+import {Divider, Checkbox, DatePicker} from 'antd'
+import moment from 'moment'
+const RangePicker = DatePicker; // DatePicker as RangePicker style
+
+ADD <Row><Col></Col></Row> tags like this:
+    <DefaultLayout>
+        <Row>
+            <Col>
+                <RangePicker onChange={setFilter}/>
+            </Col>
+        </Row>
+
+        ///REST OF CODE.... BELOW///
+    </DefaultLayout>
+
+-Create [totalCars, setTotalCars] = useState([])
+-Create setFilter function
+
+-Create useEffect(() => {
+    setTotalCars(cars)
+},[cars])
+
+->Change state for mapping "cars.map(cars => ...)" to "totalCars.map(cars => ...)"
+
+-BookingCar.jsx
+
+-->{from && to ()} will wrap TOTAL HOURS SECTION ... The block will be display if from-to dates is filled in <RangePicker/>
+*************** 
+{from && to && (
+    <div></div>
+)}
+****************
 
 
 

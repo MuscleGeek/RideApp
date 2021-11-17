@@ -13,6 +13,7 @@ app.use('/api/users/', require('./routes/usersRoute.jsx'))
 app.use('/api/cars', require('./routes/carsRoute.jsx'))
 app.use('/api/bookings', require('./routes/bookingsRoute.jsx'))
 
+
 app.get("/", (req,res) => res.send("Hello Dev!"))
 app.listen(process.env.PORT, () => console.log(`Node JS Server Started in Port ${process.env.PORT}`))
 

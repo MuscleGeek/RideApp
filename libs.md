@@ -317,3 +317,246 @@ BookingCar.jsx
 -add <Modal></Modal> after </Row>
 -add const[showModal, setShowModal] = useState(false)
 -add onClick{() => setShowModal(true)} "Show Time Slots" button
+
+//STRIPE PAYMENT CHECKPOINT
+-Sign in/up @ stripe.com
+    ->Developers
+        ->API KEYS
+            ->Publishable Key (FOR FRONTEND)
+                pk_test_51JwKlOACraCbfISzuTaAqqeM5dU0mEbDF1b3HX2PdbOMk19ku95TmkkQGp3ODp9Y9muhfwJX31BfW2WuyGTNgPix00tELKPqEB
+            ->Secret Key (FOR BACKEND)
+                sk_test_51JwKlOACraCbfISzAaLgqYHBwHIOVzOsgPGwlWforyMzzsb40TPojwcT9D5tsHlfIQDzt9h40dYXJGx1Y8QEOX7400lu5fZWtB
+
+//PAYMENT GATEWAY FRONTEND CHECKPOINT
+https://stripe.com/docs/payments/checkout //DOCS FOR MORE DETAILS!
+
+We need to implement checkout payment.So, we need to install this library from FontEnd
+
+$npm i react-stripe-checkout
+
+->BookingCar.jsx
+    ADD:
+    import StripeCheckout from 'react-stripe-checkout'
+
+    <StripeCheckout token={this.onToken} stripeKey="pk_test_51JwKlOACraCbfISzuTaAqqeM5dU0mEbDF1b3HX2PdbOMk19ku95TmkkQGp3ODp9Y9muhfwJX31BfW2WuyGTNgPix00tELKPqEB"/>
+
+*****NOTE
+import and Stripe tag Snippet have been gotten from https://www.npmjs.com/package/react-stripe-checkout
+
+****
+-Add <StripeCheckout/> BELOW <h3>Total Amount: {totalAmount}</h3>
+
+-Move and delete "onClick" function to <button>Book Now</button> getting something like this:
+            <StripeCheckout>
+                <button className="btn btn-secondary p-2">Book Now</button>
+            </StripeCheckout>
+
+->Create onToken = (token)=>{console.log(token)} 
+
+****TEST PAYMENT INTEGRATION
+https://stripe.com/docs/testing#cards -> CARDS
+https://temp-mail.org                   ->Temp Mail
+
+***AT THIS POINT WE SHOULD BE ABLE TO SEE THE TRANSACTION DONE FROM INSPECT CODE
+Object { id: "tok_1JwLz4ACraCbfISzPNEUcvz4", object: "token", card: {…}, client_ip: "186.32.223.83", created: 1637047298, email: "veloder577@erpipo.com", livemode: false, type: "card", used: false }
+​*********************
+
+
+
+***NOW WE NEED TO INTEGRATE PAYMENT GATEWAY FROM BACKEND
+
+Now we need to move bookNow() content to onToken() like this: (delete BookNow())
+    const onToken= (token) => {
+            const reqObj = {
+                user: JSON.parse(localStorage.getItem('user'))._id,  //user PK
+                car: car._id,   //car PK
+                totalHours,
+                totalAmount,
+                driverRequired: driver,
+                bookedTimeSlots: {
+                    from,
+                    to,
+                }
+            }
+
+            dispatch(bookCar(reqObj))
+        }
+
+**Install Stripe  BACKEND**
+$npm i stripe
+*****************************
+
+->BookingsRoute.jsx
+
+****INSTALL uuid***
+$npm i uuid
+****************
+
+-ADD
+    -> const stripe = require('stripe')('')    //second parenthesis refers to Secret Key
+    -> const {v4: uuidv4} = require('uuid')   //Unique UID
+
+    //AFTER req.body.transactionID= '1234'
+    -> const {token} = req.body
+
+-ADD into Try{} statement
+    -const customer = await Str...//CODE CODE MORE CODE
+
+    -const payment = await ....
+
+-Then, create if(){}else{} move const newBooking and const Car like this:
+It will be the payment validation
+
+            if(payment){
+
+                req.body.transactionId = payment.source.id
+                const newBooking = new Booking(req.body)
+                await newBooking.save()
+                
+                const car = await Car.findOne({_id: req.body.car})
+                /**console.log(req.body.car); */
+                car.bookedTimeSlots.push(req.body.bookedTimeSlots)
+                
+                await car.save()
+                res.send('Your booking has been successfully')
+
+            }else {
+        
+                return res.status(400).json(error)
+            }
+
+            ///....CODE CODE CODE MORE CODE BELOW
+
+At this point we should be able to save transaction into our DB.Lets take a look at DB for our new booked record are correctly added (transactionId column must appear something like transactionId:"card_1JwOo9ACraCbfISzla1Ova42". If it is correct, payment gateway has been integrated correctly.)
+
+///USER BOOKINGS PAGE DESIGN FE// CHECKPOINT
+
+->Create src/pages/UserBookings.jsx
+
+*****ADD ROUTE @App.jsx***
+import {UserBookings} from '../src/pages/UserBookings.jsx'
+<ProtectedRoute path="/userbookings" exact component={UserBookings}/>
+
+->BookingsRoute.jsx
+Create route request to get all cars booked by User
+
+    ->route.get('/getallbookings', async(req,res) => {//...CODE CODE MORE CODE} )
+
+->bookingActions.jsx
+Create getallbookings() to dispatch all cars booked by User
+
+    ->export const getallbookings = () => async dispatch => {//CODE MORE CODE...}
+
+->Create
+    ->src/redux/reducers/bookingsReducer.jsx
+        ->Create const bookingsReducer = (state=state, action) => {//CODE MORE CODE}
+
+
+->UserBookings.jsx
+    ->import {useState, useEffect} from 'react'
+    ->import {userDispatch, useSelector} from 'react-redux'
+    ->import {getAllBookings} from '../redux/actions/bookingsActions.jsx'
+    ->const dispatch =useDispatch()
+
+    //RE/RENDER All cars booked by User
+    ->Add UserEffect({  
+        dispatch(getallbookings())   
+    },[])
+
+->Store.jsx
+-import {bookingsReducer} from './reducer/bookingsReducer.jsx
+Add bookingsReducer to rootReducer() like this:
+    const rootReducer = combneReducers({
+        carsReducer,
+        alertReducer,
+        bookingReducer
+    })
+
+
+//USERBOOSTRAP LOGIC
+
+->UserBookings.jsx
+
+->bookingsRoute.jsx
+
+-remove this line const bookings =  await Booking.find() then add this one
+                  const bookings =  await Booking.find().populate('car')  //From Booking Table find out 'car' entity(PK n:n)
+
+
+->UserBookings.jsx
+ADD
+
+We are going to create Car Booking Details (Detail Card Style) purchased by User
+
+//AS FIRST STEP
+import moment from 'moment'
+import {Spinner} from '../components/Spinner.jsx'
+
+//AS SECOND STEP
+const {bookings} = useSelector(state => state.bookingsReducer)
+const user =  JSON.parse(localStorage.getItem('user')
+const {loading} = useSelector(state => state.alertsReducer)
+
+Structure when get adds and any modifying it is going to look like this:
+
+***********************
+return (
+        <div>
+            <DefaultLayout>
+                {loading && (<Spinner />)}
+               <h3 className="text-center mt-3">MY BOOKINGS</h3>
+               <hr/>
+                //AS First Step
+               <Row justify="center" gutter={16}>
+                    <Col lg={16} sm={24}>
+                        {bookings.filter(u => u.user == user._id).map((booking) => {
+                        
+                        return(
+                            <Row gutter={16} className="booked-car-detail box-shadow-1 m-2 text-left ">
+                                <Col lg={6} sm={24}>
+                                    <p><b>{booking.car.name}</b></p>
+                                    <p>Total Hours: <b>{booking.totalHours}</b></p>
+                                    <p>Rent Per Hour:<b>{booking.car.rentPerHour}</b></p>
+                                    <p>Total Amount: <b>{booking.totalAmount}</b></p>
+                                </Col>
+
+                                <Col lg={12} sm={24}>
+                                    <p>TransactionID: <b>{booking.transactionId}</b></p>
+                                    <p>From: <b>{booking.bookedTimeSlots.from}</b></p>
+                                    <p>To: <b>{booking.bookedTimeSlots.to}</b></p>
+                                    <p>Date of Booking: <b>{moment(booking.createdAt).format('MMM DD yyyy HH:mm')}</b></p>
+
+                                </Col>
+
+                                <Col lg={6} sm={24} className="text-right">
+                                    <img src={booking.car.image} height="150" className="p-2" style={{borderRadius: "15px"}} />
+                                </Col>
+                            </Row>)
+                        })}
+ 
+                    </Col>  
+               </Row>
+               //END First Step
+            </DefaultLayout>
+        </div>
+**************************************************************
+
+->bookingsAction.jsx
+ADD this @ axios.post() Block after message.success() line
+
+setTimeout(() => {  
+            
+            window.location.href="/userbookings" //When car booked user will be redirect to user bookings                
+       }, 1000)
+
+It will useful when an USER booking a car. There will be 1 sec delay after redirecting to /userbookings page.It will display all cars booked by currently logged in user.
+
+-DefaultLayout.jsx
+import {Link} from 'react-router-dom
+
+Modifying hrefs
+href="/"
+href="/userbookings"
+href="/profile"             //NEXT LECTURE  
+
+Modifying <h1></h1> to <h1><Link to="/">506 Auto Rental</Link></h1>

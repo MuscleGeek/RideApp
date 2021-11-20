@@ -4,6 +4,7 @@ const router = express.Router()
 //Models
 const Car = require("../models/carModel.jsx")
 
+//CRUD :: R
 router.get("/getallcars", async(req, res) => {
 
     try {
@@ -14,6 +15,18 @@ router.get("/getallcars", async(req, res) => {
         
     }
 
+})
+//CRUD :: C
+router.post("/addcar", async(req,res) => {
+    try {
+        const newCar = new Car(req.body) //instancing a new car object
+        await newCar.save()
+
+        res.send("Got it!, Car has been added successfully")
+
+    } catch (error) {
+        return res.status(400).json(error)
+    }
 })
 
 module.exports = router;

@@ -14,3 +14,6 @@ Library for parsing, validating, manipulating, and formatting dates. Project Sta
 
 //Modal
 Usado para despleagar un pantalla con informacion detallada. Usado como un tipo de informacion basado en cuando hacerla visible.
+
+//layout= "vertical"
+Sirve de mucho ayuda para acomodar imágenes, botones, títulos etc. Para que todo lo antes mencionado no se desacomode cuando se visualice la aplicación en diferentes dispositivos móviles, para ello se utilizara  layouts vertical y horizonta

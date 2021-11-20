@@ -560,3 +560,51 @@ href="/userbookings"
 href="/profile"             //NEXT LECTURE  
 
 Modifying <h1></h1> to <h1><Link to="/">506 Auto Rental</Link></h1>
+
+
+            ////CRUD//////CRUD/////CRUD/////
+
+//ADD NEW CAR
+-Create src/pages/AddCar.jsx and adding <DefaultLayout> component.
+-import { DefaultLayout } from '../components/DefaultLayout'
+
+
+-App.jsx
+
+ADD
+import {AddCar} from './pages/AddCar.jsx;
+
+<ProtectedRoute path='/addcar' exact component={AddCar}/>
+
+-AddCar.jsx
+    ->Import {Col, Row, Form, Input} from 'antd'
+    ->Create whole <Row><Col><Form><Form.Item><Input/></Form.Item></Form></Col></Row> with its respective functionality.
+
+
+-CarActions.jsx
+
+    ->Create const addCar()  Action with its respective functionality
+
+-AddCar.jsx
+
+    ->import {useDispatch, useSelector} form "react-redux'
+    ->import { addCar } from '../redux/actions/carsActions' //AddCar Action
+
+    ->const dispatch = useDispatch()
+
+    ->Create onFinish(values)  //retrieves all values from form to POST a new car API request operation.
+
+/ADD NEW CAR API CHECKPOINT //BE
+
+->carRouter.jsx
+
+-ADD router functionality
+router.post("./addcar", (req, res) => {//code more code})
+
+-Test form functionality adding a new car. It must be functional.
+***HINT: STOP AND RUN BE - FE after any new changes (404 error issue(tested))***
+
+---I JUST FOUND OUT className="text-<left-right-center>" it seems like not working. So, Instead of using className replacing by style={{textAlign: "<left-right-center>"}} property---- IT'S WORKING now!
+
+
+//UPDATE CAR DESIGN //CHECKPOINT FE

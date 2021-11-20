@@ -601,10 +601,80 @@ import {AddCar} from './pages/AddCar.jsx;
 -ADD router functionality
 router.post("./addcar", (req, res) => {//code more code})
 
--Test form functionality adding a new car. It must be functional.
+-Test form functionalitY; adding a new car. It must be functional.
 ***HINT: STOP AND RUN BE - FE after any new changes (404 error issue(tested))***
 
 ---I JUST FOUND OUT className="text-<left-right-center>" it seems like not working. So, Instead of using className replacing by style={{textAlign: "<left-right-center>"}} property---- IT'S WORKING now!
 
 
 //UPDATE CAR DESIGN //CHECKPOINT FE
+Create
+    ->src/pages/AdminHome.jsx
+        ***CLONE CODE FROM ./Home PAGE TO ./AdminHome.jsx PAGE
+
+        **//REMOVE
+            ->setFilter()
+            -><button></button>  //it will replace by delete ant desing API icons 
+
+ADD ROUTE 
+    ->App.jsx
+        -<ProtectedRoute path='/admin' exact component={AdminHome}/>
+        
+//INSTALL ANT DESIGN ICONS
+**info https://ant.design/components/icon/#API **
+$npm i --save @ant-design/icons
+
+->AdminHome.jsx
+        //We will use Ant Design API Icons
+    ->import {deleteOutlined, editOutlined} from '@ant-desing/icons'
+    ->import {Edit} from 'antd' //for Edit popup Modal
+
+-CREATE 
+    ->src/pages/EditCar.jsx                 //CRUD :: U
+
+        ***CLONING WHOLE CODE FROM AddCar.jsx***
+
+-ADD ROUTE App.jsx
+
+    -import { EditCar } from './pages/EditCar';
+    -<ProtectedRoute path="/editcar/:carid" exact component={EditCar}/>
+
+-HomeAdmin.jsx
+
+    -import {Link} from "react-router-dom"
+
+        //Redirecting to Edit Car page//
+    -MODIFY
+        -<Link to={`/editcar/${car._id}`}><EditOutlined  style={{color: "green", marginRight: "10px", cursor: "pointer"}}/></Link>
+
+        -import { getAllCars } from '../redux/actions/carsActions'
+        -useEffect( () => {
+            
+            useEffect(() => {
+        
+        if (cars.length == 0) {
+            dispatch(getAllCars())
+        }else {
+            setTotalCars(cars)
+            setCar(cars.find((c) => c._id == match.params.carid)) //if id matches then it will trigger a rendering for car update operation
+            console.log(car)
+        }
+    },[cars])
+
+        -import {useState, useEffect} from 'react'
+        const {cars} = useSelector(state => state.carsReducer)
+        const [car, setCar] = useState()
+
+        MODIFY
+        const EditCar(match)     //incorporate "match" parameter. So, matching IDs will do trigger an update operation. If doesnt, user needs to create new car.
+        
+        //ADD initalValues prop
+        <Form initialValues={car}>
+
+
+
+
+
+
+
+

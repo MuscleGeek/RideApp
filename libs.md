@@ -680,11 +680,37 @@ carsRoute.jsx
 
 CREATE route for car editing
 
-    route.post("/editcar", (req, res) => {
+    router.post("/editcar", (req, res) => {
         //code more code //
     })
 
 
+carsActions.jsx
+
+CREATE
+    ->export const editCar = async(req,res) => {
+        //CODE MORE CODE
+    }
+
+TEST EDIT CAR FUNCTIONALITY! (IT SHOULD BE FULLY FUNCTIONAL)
+
+//DefaultLayout.jsx
+Replace "Profile" => "Admin"
+        -Replace href to href="/admin"
 
 
+AdminHome.jsx
+ADD 
+    ->New Button named "ADD CAR" under 
+        <DefaultLayout>
 
+            <Row justify="center" gutter={16} className="mt-2">
+                <Col lg={20} sm={24} className="mt-2">
+                    <div style={{textAlign: "right"}}>
+                        <button className="btn btn-light" style={{borderColor: "green"}}>
+                            <a href="/addcar" style={{color: "green"}} target="_blank">ADD CAR</a>
+                        </button>
+                    </div>
+                </Col>
+            </Row>
+            /////code more code..... below

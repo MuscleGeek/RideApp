@@ -48,4 +48,17 @@ router.post("/editcar", async(req, res) => {
     }
 })
 
+//CRUD :: D
+
+router.post("/deletecar", async (req,res) => {
+
+    try {
+         await Car.findOneAndDelete({_id :req.body.carid})
+
+         res.send("Got it!, Car has been deleted successfully!")
+
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+})
 module.exports = router;

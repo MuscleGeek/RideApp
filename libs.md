@@ -714,3 +714,49 @@ ADD
                 </Col>
             </Row>
             /////code more code..... below
+
+//DELETE CAR // CHECKPOINT     CRUD :: D
+
+We will use an button from ANT DESIGN named "popconfirm". It will perform a popup action before delete car(yes/no).
+https://ant.design/components/popconfirm/
+
+AdminHome.jsx  //delete functionality
+
+import { Popconfirm, message } from 'antd';
+
+Under <Link to={`/editcar/${car._id}`}>.....</Link> (Move <DeleteOutlined> into it!!)
+      
+      <Popconfirm
+        title="Are you sure you want to delete this car?"
+        onConfirm={() => {}}
+        okText="Yes"
+        cancelText="No"
+       >
+        <DeleteOutlined style={{color:"orangered", cursor: "pointer"}}/>
+       </Popconfirm>
+
+carAction.jsx
+CREATE DELETE FUNCIONALITY
+    export const deleteCar = (reqObject) => async dispatch {
+        //CODE MORE CODE
+    }
+
+AdminHome.jsx
+import {deleteCar} from from "../redux/actions/carsActions.jsx"
+
+MODIFY "onConfirm" functionality to <Popconfirm>
+onConfirm={() => {dispatch(deleteCar({carid : car._id}))}}
+
+
+carsRoute.jsx
+
+CREATE DELETE ROUTE FUNCTIONALITY
+    ->router.post("/deletecar", async (req,res) => { //CODE MORE CODE HERE }
+
+RESTART FB-BE runtimes (will avoid status 400 or 404 errors before going to check code again)
+At this point we could be able to delete cars!!. Test add some car and then delete it!
+
+
+//CSS FIXES AND DEPLOYMENTE //RESPONSIVENESS
+
+

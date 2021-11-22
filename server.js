@@ -15,7 +15,7 @@ app.use('/api/bookings', require('./routes/bookingsRoute.jsx'))
 
 //DEPLOYMENT
 const path = require('path')
-if(process.env.ENV === 'production')
+if(process.env.NODE_ENV === 'production')
 {
     app.use('/', express.static('client/build')) //FE Project name deploy path
 

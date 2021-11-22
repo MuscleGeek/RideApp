@@ -759,4 +759,33 @@ At this point we could be able to delete cars!!. Test add some car and then dele
 
 //CSS FIXES AND DEPLOYMENTE //RESPONSIVENESS
 
+/Home => Test responsiveness... it must be ok
+
+/BookingCars.jsx
+We will use the next lines to get the same flipping car image animation like login/sigup pages
+
+    //AOS Animation on Scroll
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';  // <link> for styles could be an alternative too
+
+REPLACE <img/> data-aos data-aos-duration properties for car image animation
+    -<img src={car.image} className='carImg-booking box-shadow-1 w-100' alt="booking card" data-aos="flip-left" data-aos-duration="1000"/>
+
+/AdminHome
+REPLACE (some styling props have been added.. only at this code)
+    -<div className="d-flex justify-content-between align-items-center">
+        <h3 className="mt-1">Admin Panel</h3>
+        <button className="btn btn-light" style={{borderColor: "green"}}>
+            <a href="/addcar" style={{color: "green"}} target="_blank">ADD CAR</a>
+        </button>
+     </div>
+
+EditCar.jsx
+REPLACE line                   //(xs={24} p-2  has been added)
+    -<Col lg={12} sm={24} sx-={24} className="p-2">
+
+AddCar.jsx
+REPLACE line                   //(xs={24} p-2  has been added)
+    -<Col lg={12} sm={24} sx-={24} className="p-2">
+
 

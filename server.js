@@ -13,7 +13,17 @@ app.use('/api/users/', require('./routes/usersRoute.jsx'))
 app.use('/api/cars', require('./routes/carsRoute.jsx'))
 app.use('/api/bookings', require('./routes/bookingsRoute.jsx'))
 
+//DEPLOYMENT
+const path = require('path')
+if(process.env.ENV === 'production')
+{
+    app.use('/', express.static('client/build')) //FE Project name deploy path
 
+    app.get("*", (req,res) => {
+
+        res.sendFile(path.resolve(__dirname, 'client/build/index.html')) 
+    })
+}
 app.get("/", (req,res) => res.send("Hello Dev!"))
 app.listen(process.env.PORT, () => console.log(`Node JS Server Started in Port ${process.env.PORT}`))
 

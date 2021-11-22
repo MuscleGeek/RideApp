@@ -666,13 +666,23 @@ $npm i --save @ant-design/icons
         const [car, setCar] = useState()
 
         MODIFY
-        const EditCar(match)     //incorporate "match" parameter. So, matching IDs will do trigger an update operation. If doesnt, user needs to create new car.
+        const EditCar({match})     //incorporate "match" parameter. So, matching IDs will do trigger an update operation. If doesnt, user needs to create new car.
         
         //ADD initalValues prop
         <Form initialValues={car}>
 
+carsAction.jsx
+CREATE function for edit car operation
+    export editCar = (reqObj) => async dispatch {//CODE MORE CODE HERE//}
 
 
+carsRoute.jsx
+
+CREATE route for car editing
+
+    route.post("/editcar", (req, res) => {
+        //code more code //
+    })
 
 
 

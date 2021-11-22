@@ -33,15 +33,15 @@ router.post("/addcar", async(req,res) => {
 router.post("/editcar", async(req, res) => {
 
     try {
-        const updateCar = await Car.findOne({_id : req.body._id}) //find ID to edit
+        const car = await Car.findOne({_id : req.body._id}) //find ID to edit
         //      FE              BE        //
-        updateCar.name = req.body.name
-        updateCar.image = req.body.image
-        updateCar.rentPerHour = req.body.rentPerHour
-        updateCar.capacity = req.body.capacity
-        updateCar.fuel = req.body.fuel
+        car.name = req.body.name
+        car.image = req.body.image
+        car.rentPerHour = req.body.rentPerHour
+        car.capacity = req.body.capacity
+        car.fuel = req.body.fuel
 
-        await updateCar.save()
+        await car.save()
         res.send('Got it!, Car info has been updated successfully') 
     } catch (error) {
         return res.status(400).json(error)

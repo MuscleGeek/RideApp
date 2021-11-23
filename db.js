@@ -5,7 +5,7 @@ require('dotenv').config()
 const CONNECTION_STRINGS = process.env.CONNECTION_STRINGS;
 
 const connectDB = () => {
-    mongoose.connect("mongodb+srv://mern_dev:VDVKs24tIXF1G9m5@cluster0.dgkmy.mongodb.net/auto_rental",{useUnifiedTopology: true, useNewUrlParser: true });
+    mongoose.connect(CONNECTION_STRINGS,{useUnifiedTopology: true, useNewUrlParser: true });
 
     //Validating connectionDB
     const connection = mongoose.connection;

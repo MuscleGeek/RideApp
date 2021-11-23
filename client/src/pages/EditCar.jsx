@@ -15,9 +15,9 @@ export const EditCar = ({match}) => {
     
     const dispatch = useDispatch()
 
-    const {loading} =  useSelector(state => state.alertsReducer)
+    const {loading} =  useSelector((state) => state.alertsReducer)
 
-    const {cars} = useSelector(state => state.carsReducer) //invoke GET_ALL_CARS
+    const {cars} = useSelector((state) => state.carsReducer) //invoke GET_ALL_CARS
     const [car , setCar] = useState()  //Gen a new state from GET_ALL_CARS
     
 

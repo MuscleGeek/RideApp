@@ -1,12 +1,10 @@
 const mongoose = require("mongoose")
-import dotenv from 'dotenv'
 
-dotenv.config({path : "./.env"})
-//require("dotenv").config()
+require("dotenv").config()
 
 
 const connectDB = () => {
-    mongoose.connect(`${process.env.CONNECTION_STRINGS}`,{useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(process.env.CONNECTION_STRINGS,{useNewUrlParser: true, useUnifiedTopology: true });
 
     //Validating connectionDB
     const connection = mongoose.connection;

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require('dotenv').config();
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const CONNECTION_STRINGS = process.env.CONNECTION_STRINGS;
 
@@ -12,7 +12,7 @@ const connectDB = () => {
     connection.on("connected", () => {console.log("Database Connection Sucessfully")});
 
     //error CNX
-    connection.on('error', () => { console.log("Oops, something went wrong!, Database connection error!")});
+    connection.on("error", () => { console.log("Oops, something went wrong!, Database connection error!")});
 
 
 }

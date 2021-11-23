@@ -77,7 +77,7 @@ export const BookingCar = ({match}) => {
     }
 
 
-    const onToken= (token) => {
+    const onToken = (token) => {
         const reqObj = {
             token,
             user: JSON.parse(localStorage.getItem('user'))._id,  //user PK

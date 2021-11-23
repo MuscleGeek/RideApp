@@ -26,7 +26,7 @@ export const EditCar = ({match}) => {
     //GET_ALL_CARS RENDER
     useEffect(() => {
         
-        if (cars.length == 0) {
+        if (cars.length === 0) {
             dispatch(getAllCars())
         }else {
             setTotalCars(cars)

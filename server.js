@@ -2,9 +2,8 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-/*const port = process.env.PORT;*/
-const dbConnection = require('./db') //this line will be added when we have created db.js file
-require('dotenv').config()
+const dbConnection = require('./db.js') //this line will be added when we have created db.js file
+require("dotenv").config()
 app.use(cors())
 app.use(express.json()) //bodyParser
 

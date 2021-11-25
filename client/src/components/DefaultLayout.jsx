@@ -41,7 +41,7 @@ export const DefaultLayout = (props) => {
                 <Row gutter={16} justify="center">
                   <Col lg={20} sm={24} xs={24}>
                   <div className="d-flex justify-content-between">
-                      <h1><Link  to="/"><span>506</span> <span style={{color: "white"}}>Auto</span> <span style={{color: "red"}}>Rental</span></Link></h1>
+                      <h1><Link className="logo-font" to="/"><span>RideApp</span> <span style={{color: "white"}}>Auto</span> <span style={{color: "red"}}>Rental</span></Link></h1>
                       <Dropdown overlay={menu} placement="bottomCenter">
                           <button className="btn-logout btn btn-dark">{user.username}</button>
                       </Dropdown>

@@ -23,6 +23,7 @@ import { bookCar } from '../redux/actions/bookingActions.jsx'
 import AOS from 'aos';
 import 'aos/dist/aos.css';  // <link> for styles could be an alternative too
 
+AOS.init();
 //Range Timing type
 const {RangePicker} = DatePicker;
 

@@ -133,10 +133,11 @@ button{
   transform: translateY(-50%, -50%);
   font-size: 45;
   opacity: 0.22 !important;
-  
 }
+
 .login a {
   color: #1f1f1f;
+  
 }
 
 /*Booking Car Page*/
@@ -195,4 +196,14 @@ svg {
 /*HOME*/
 .ant-picker {
   padding-left: 20px;
+}
+
+/*CUSTOM FONT FOR LOGO*/
+@font-face {
+  font-family: 'NalikaSignature' ;
+  src: url('./assets/NalikaSignature.ttf');
+}
+.logo-font {
+  font-family: "NalikaSignature";
+  font-weight: 100;
 }

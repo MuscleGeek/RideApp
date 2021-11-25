@@ -8,6 +8,13 @@ import {Spinner} from '../components/Spinner.jsx'
 //ANT DESIGN
 import {Row, Col} from 'antd';
 
+//AOS Animation on Scroll
+import AOS from 'aos';
+import 'aos/dist/aos.css';  // <link> for styles could be an alternative too
+
+AOS.init();
+//Range Timing type
+
 export const UserBookings = () => {
 
     const dispatch = useDispatch()
@@ -33,7 +40,7 @@ export const UserBookings = () => {
                         {bookings.filter(u => u.user == user._id).map((booking) => {
                         
                         return(
-                            <Row gutter={16} className="booked-car-detail box-shadow-1 m-2 " style={{textAlign: "left"}}>
+                            <Row gutter={16} className="booked-car-detail box-shadow-1 m-2 " style={{textAlign: "left"}} data-aos="slide-left" data-aos-duration="1000">
                                 <Col lg={6} sm={24}>
                                     <p><b>{booking.car.name}</b></p>
                                     <p>Total Hours: <b>{booking.totalHours}</b></p>
@@ -50,7 +57,7 @@ export const UserBookings = () => {
                                 </Col>
 
                                 <Col lg={6} sm={24} style={{textAlign: "right"}}>
-                                    <img src={booking.car.image} height="150" className="p-2" style={{borderRadius: "15px"}} alt="Booking Car"/>
+                                    <img src={booking.car.image} height="150" className="p-2" style={{borderRadius: "15px"}} alt="Booking Car" />
                                 </Col>
                             </Row>)
                         })}
